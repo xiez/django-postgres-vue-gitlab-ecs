@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: django-channels
@@ -15,7 +15,7 @@ spec:
       containers:
         - name: backend
           imagePullPolicy: IfNotPresent
-          image: backend:14
+          image: backend:1
           command: ["daphne", "backend.asgi:application", "--bind", "0.0.0.0", "--port", "9000"]
           livenessProbe:
             httpGet:

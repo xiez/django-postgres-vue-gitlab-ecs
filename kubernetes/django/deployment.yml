@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: django
@@ -15,7 +15,7 @@ spec:
       containers:
         - name: backend
           imagePullPolicy: IfNotPresent
-          image: backend:13
+          image: backend:1
           command: ["./manage.py", "runserver", "0.0.0.0:8000"]
           livenessProbe:
             httpGet:
@@ -52,6 +52,7 @@ spec:
                   name: postgres-credentials
                   key: password
 
+          # I'm not sure that we need these volumes, but they were included in the tutorial referenced at the beginning of this guide.
           volumeMounts:
             - name: postgres-volume-mount
               mountPath: /var/lib/busybox

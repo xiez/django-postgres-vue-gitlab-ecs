@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: celery-beat
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: celery-beat
-          image: backend:14
+          image: backend:1
           command: ["celery", "beat", "--app=backend.celery_app:app", "--loglevel=info"]
           env:
             - name: DJANGO_SETTINGS_MODULE
